@@ -10,6 +10,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
+
+from pyvirtualdisplay import Display
+
 import time
 
 from scraper.items import SimilarscraperItem
@@ -24,6 +27,10 @@ class SimilarSpider(InitSpider):
 
     def init_request(self):
         """This function is called before crawling starts."""
+
+        display = Display(visible=0, size=(1024, 768))
+        display.start()
+
         self.driver = webdriver.Firefox()
         # self.driver.implicitly_wait(30)
         return Request(url='https://www.similarweb.com', callback=self.parse)
