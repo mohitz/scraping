@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
 import time
 
-from SimilarScraper.items import SimilarscraperItem
+from scraper.items import SimilarscraperItem
 
 
 class SimilarSpider(InitSpider):
@@ -29,10 +29,10 @@ class SimilarSpider(InitSpider):
         return Request(url='https://www.similarweb.com', callback=self.parse)
 
     def parse(self, response):
-        with open("/Users/mohit/code/upwork/similarwebscraping/SimiarWebScraping/SimilarScraper/germany40K-50K.txt", 'r') as f:            
-            sites = [line.rstrip('\n') for line in f];
+        #with open("/Users/mohit/code/upwork/similarwebscraping/SimiarWebScraping/SimilarScraper/germany40K-50K.txt", 'r') as f:            
+        #   sites = [line.rstrip('\n') for line in f];
         
-        #sites = ['monster.com', 'meroanswer.com', 'upwork.com', 'canva.com', 'twitter.com']
+        sites = ['monster.com', 'meroanswer.com', 'upwork.com', 'canva.com', 'twitter.com']
         all_links = []
         for site in sites:
             full_url = "https://www.similarweb.com/website/" + site
